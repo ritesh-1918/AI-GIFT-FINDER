@@ -90,8 +90,7 @@ const Header = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
-    </header >
+        </header>
     );
 };
 
