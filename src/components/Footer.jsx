@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Gift, Heart } from 'lucide-react';
 
 const Footer = () => {
@@ -18,9 +18,9 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-bold mb-4">Quick Links</h3>
                         <ul className="space-y-2 text-gray-400">
-                            <li><a href="/legal" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                            <li><a href="/legal" className="hover:text-primary transition-colors">Terms of Service</a></li>
-                            <li><a href="/faq" className="hover:text-primary transition-colors">FAQ</a></li>
+                            <li><Link to="/legal" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                            <li><Link to="/legal" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+                            <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
                         </ul>
                     </div>
                     <div>

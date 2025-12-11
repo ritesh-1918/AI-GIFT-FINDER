@@ -10,6 +10,26 @@ export const AppProvider = ({ children }) => {
     const [currentResults, setCurrentResults] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    // Theme Logic
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    };
+
     useEffect(() => {
         localStorage.setItem('giftFinderWishlist', JSON.stringify(wishlist));
     }, [wishlist]);
@@ -33,7 +53,9 @@ export const AppProvider = ({ children }) => {
             currentResults,
             setCurrentResults,
             loading,
-            setLoading
+            setLoading,
+            theme,
+            toggleTheme
         }}>
             {children}
         </AppContext.Provider>

@@ -65,10 +65,10 @@ const GiftForm = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full mx-auto"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-2xl w-full mx-auto transition-colors duration-300"
         >
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-3xl font-bold text-gray-800">Tell us about them</h2>
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Tell us about them</h2>
                 <button
                     type="button"
                     onClick={handleSurpriseMe}
@@ -81,12 +81,12 @@ const GiftForm = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Who is this for?</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Who is this for?</label>
                         <select
                             name="recipient"
                             value={formData.recipient}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         >
                             <option>Friend</option>
                             <option>Family Member</option>
@@ -98,12 +98,12 @@ const GiftForm = () => {
                         </select>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Age</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Age</label>
                         <select
                             name="age"
                             value={formData.age}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         >
                             <option value="" disabled>Select Age Group</option>
                             <option>Toddler (0-3)</option>
@@ -117,26 +117,26 @@ const GiftForm = () => {
                 </div >
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Interests & Hobbies</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Interests & Hobbies</label>
                     <input
                         type="text"
                         name="interests"
                         value={formData.interests}
                         onChange={handleChange}
                         placeholder="e.g. Gaming, Cooking, Tech, Marvel Movies..."
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         required
                     />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Occasion</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Occasion</label>
                         <select
                             name="occasion"
                             value={formData.occasion}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         >
                             <option>Birthday</option>
                             <option>Anniversary</option>
@@ -148,12 +148,12 @@ const GiftForm = () => {
                         </select>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Budget (INR)</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Budget (INR)</label>
                         <select
                             name="budget"
                             value={formData.budget}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         >
                             <option>Under ₹500</option>
                             <option>₹500 - ₹2000</option>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Gift, Heart, Menu, X } from 'lucide-react';
+import { Gift, Heart, Menu, X, Sun, Moon } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
-    const { wishlist } = useAppContext();
+    const { wishlist, theme, toggleTheme } = useAppContext();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const location = useLocation();
 
@@ -14,11 +14,11 @@ const Header = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Trending', path: '/trending' },
-        { name: 'About', path: '/about' }, // Placeholder
+        { name: 'About', path: '/about' },
     ];
 
     return (
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 {/* Logo */}
                 <Link to="/" className="flex items-center space-x-3 group">
@@ -34,14 +34,21 @@ const Header = () => {
                         <Link
                             key={link.name}
                             to={link.path}
-                            className={`font-medium transition-colors hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-gray-600'
+                            className={`font-medium transition-colors hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-gray-600 dark:text-gray-300'
                                 }`}
                         >
                             {link.name}
                         </Link>
                     ))}
-                    <Link to="/wishlist" className="relative p-2 hover:bg-gray-100 rounded-full transition-colors group">
-                        <Heart className={`w-6 h-6 transition-colors ${wishlist.length > 0 ? 'fill-accent text-accent' : 'text-gray-600 group-hover:text-accent'}`} />
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors"
+                        aria-label="Toggle Theme"
+                    >
+                        {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+                    </button>
+                    <Link to="/wishlist" className="relative p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors group">
+                        <Heart className={`w-6 h-6 transition-colors ${wishlist.length > 0 ? 'fill-accent text-accent' : 'text-gray-600 dark:text-gray-300 group-hover:text-accent'}`} />
                         {wishlist.length > 0 && (
                             <span className="absolute top-0 right-0 bg-accent text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                                 {wishlist.length}
@@ -51,9 +58,17 @@ const Header = () => {
                 </nav>
 
                 {/* Mobile Menu Button */}
-                <button className="md:hidden p-2 text-gray-600" onClick={toggleMenu}>
-                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
+                <div className="flex items-center space-x-4 md:hidden">
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors"
+                    >
+                        {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+                    </button>
+                    <button className="p-2 text-gray-600 dark:text-gray-300" onClick={toggleMenu}>
+                        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -63,14 +78,14 @@ const Header = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+                        className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 overflow-hidden"
                     >
                         <nav className="flex flex-col p-4 space-y-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     to={link.path}
-                                    className="text-lg font-medium text-gray-700 hover:text-primary"
+                                    className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-primary"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     {link.name}
@@ -78,7 +93,7 @@ const Header = () => {
                             ))}
                             <Link
                                 to="/wishlist"
-                                className="flex items-center space-x-2 text-lg font-medium text-gray-700 hover:text-primary"
+                                className="flex items-center space-x-2 text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-primary"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 <span>Wishlist</span>
