@@ -10,7 +10,7 @@ AI Gift Finder is an intelligent, AI-powered web application designed to help us
 
 ## 🌟 Special Dedication
 
-This project is lovingly made for **Prakashini**, a dedicated Computer Science Junior.
+This project is made for **Prakashini**, a dedicated Computer Science Junior.
 
 - **Student**: Prakashini
 - **Course**: Polytechnic 2nd Year (2024 - 2027 Batch)
